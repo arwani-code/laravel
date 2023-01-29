@@ -1,12 +1,9 @@
-@extends('layouts.app', ['title' => 'About'])
-@section('body')
+<x-app-layout title="About">
     <div class="container">
-        <h1>About</h1>
-        <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-            velit quibusdam vero quam voluptas consequuntur? Recusandae maxime
-            tempora dicta officia omnis. Expedita officiis optio numquam? Culpa et
-            sequi quaerat reiciendis!
-        </p>
+        <x-card title="About Laravel" subtitle="Laravel is my php framework">
+            Laravel is a web application framework with expressive, elegant syntax.
+            We’ve already laid the foundation — freeing you to create without sweating
+            the small things.
+        </x-card>
     </div>
-@endsection
+</x-app-layout>
