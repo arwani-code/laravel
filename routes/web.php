@@ -11,4 +11,5 @@ Route::get('about', [PageController::class, 'about']);
 Route::get("gallery", [PageController::class, 'gallery']);
 Route::get('users', [UserController::class, 'index']);
 Route::get('users/{user}', [UserController::class, 'show']);
-Route::get('articles', [ArticleController::class, 'index']);
+Route::get('articles/', [ArticleController::class, 'index']);
+Route::get('articles/{id}', [ArticleController::class, 'show']);
