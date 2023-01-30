@@ -6,11 +6,18 @@
                     <x-card class="mb-4" title="{{ $article->title }}"
                         subtitle="{{ \Carbon\Carbon::parse($article->created_at)->format('d M, Y') }}">
                         {{ $article->body }}
-                        <div class="mt-2  d-flex align-items-center gap-2"><a href="/articles/{{ $article->id }}"
-                                class="btn btn-primary">Read More</a>
-                            <a href="/articles/{{ $article->id }}/edit" class="btn btn-success">
-                                Edit
-                            </a>
+                        <div class="mt-2  d-flex align-items-center justify-content-between gap-2">
+                            <div>
+                                <a href="/articles/{{ $article->id }}" class="btn btn-primary">Read More</a>
+                                <a href="/articles/{{ $article->id }}/edit" class="btn btn-success">
+                                    Edit
+                                </a>
+                            </div>
+                            <form action="/articles/{{ $article->id }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger">Habus</button>
+                            </form>
                         </div>
                     </x-card>
                 @empty

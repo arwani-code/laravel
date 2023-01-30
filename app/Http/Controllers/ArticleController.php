@@ -61,7 +61,12 @@ class ArticleController extends Controller
             'title' => $request->title,
             'body' => $request->body,
         ]);
-
         return redirect("/articles/{$article->id}");
+    }
+
+    public function destroy($id)
+    {
+        Db::table('articles')->delete($id);
+        return back();
     }
 }
