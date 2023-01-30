@@ -42,13 +42,26 @@ class ArticleController extends Controller
     public function edit($id)
     {
         return view('articles.edit', [
-            'articles' => Db::table('articles')->find($id),
+            'article' => Db::table('articles')->find($id),
         ]);
     }
 
     public function update(Request $request, $id)
     {
-        $article = DB::table('articles')->find($id);
-        dd($article);
+        $request->validate([
+            'title' => ['required'],
+            'body' => ['required'],
+        ]);
+
+        $article = DB::table('articles')->where(
+            'id', $id
+        )->first();
+
+        Db::table('articles')->where('id', $id)->update([
+            'title' => $request->title,
+            'body' => $request->body,
+        ]);
+
+        return redirect("/articles/{$article->id}");
     }
 }
